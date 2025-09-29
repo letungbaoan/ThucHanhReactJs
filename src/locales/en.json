@@ -1,0 +1,9 @@
+{
+  "postcard": {
+    "noTitle": "No title",
+    "unknownAuthor": "Unknown author",
+    "noDate": "Invalid date",
+    "noExcerpt": "No excerpt available",
+    "readMore": "Read more"
+  }
+}
