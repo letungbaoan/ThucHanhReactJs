@@ -7,7 +7,9 @@
     "readMore": "Đọc thêm"
   },
   "postdetail": {
-    "notFound": "Không tìm thấy bài viết"
+    "notFound": "Không tìm thấy bài viết",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa"
   },
   "about": {
     "title": "Giới thiệu",
@@ -19,6 +21,19 @@
     "formAuthor": "Tác giả",
     "formExcerpt": "Tóm tắt",
     "formContent": "Nội dung",
-    "submit": "Thêm"
+    "submit": "Thêm",
+    "update": "Cập nhật",
+    "titleRequired": "Tiêu đề là bắt buộc.",
+    "authorRequired": "Tác giả là bắt buộc.",
+    "excerptRequired": "Tóm tắt là bắt buộc.",
+    "contentRequired": "Nội dung là bắt buộc."
+  },
+  "editpostwrapper": {
+    "notFound": "Không tìm thấy bài viết"
+  },
+  "common": {
+    "updateSuccess": "Cập nhật bài viết thành công!",
+    "createSuccess": "Thêm bài viết mới thành công!",
+    "error": "Đã xảy ra lỗi, vui lòng thử lại!"
   }
 }

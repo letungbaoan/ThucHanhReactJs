@@ -16,7 +16,9 @@ i18n.use(initReactI18next).init({
       postcard: en.postcard,
       postdetail: en.postdetail,
       about: en.about,
-      newpost: en.newpost
+      newpost: en.newpost,
+      editpostwrapper: en.editpostwrapper,
+      common: en.common
     },
     vi: {
       translation: {
@@ -29,11 +31,15 @@ i18n.use(initReactI18next).init({
       postcard: vi.postcard,
       postdetail: vi.postdetail,
       about: vi.about,
-      newpost: vi.newpost
+      newpost: vi.newpost,
+      editpostwrapper: vi.editpostwrapper,
+      common: vi.common
     }
   },
   lng: 'vi',
   fallbackLng: 'en',
+  ns: ['translation', 'newpost', 'common', 'postcard', 'postdetail', 'about', 'editpostwrapper'],
+  defaultNS: 'translation',
   interpolation: {
     escapeValue: false
   }
