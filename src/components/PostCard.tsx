@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export interface Post {
   id: number
@@ -38,7 +39,12 @@ const PostCard = ({ post }: PostCardProps) => {
         {safeAuthor} • {safeDate}
       </p>
       <p className='mt-2 text-gray-700'>{safeExcerpt}</p>
-      <button className='mt-3 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'>{t('readMore')}</button>
+      <Link
+        to={`/post/${post.id}`}
+        className='mt-3 inline-block rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'
+      >
+        {t('readMore')}
+      </Link>
     </div>
   )
 }

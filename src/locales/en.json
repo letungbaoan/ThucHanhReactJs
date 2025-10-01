@@ -5,5 +5,12 @@
     "noDate": "Invalid date",
     "noExcerpt": "No excerpt available",
     "readMore": "Read more"
+  },
+  "postdetail": {
+    "notFound": "Post not found"
+  },
+  "about": {
+    "title": "About",
+    "content": "This is a simple blog application built with React and TypeScript."
   }
 }
