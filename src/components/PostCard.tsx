@@ -9,6 +9,10 @@ export interface Post {
   content: string
 }
 
+export interface PostRaw extends Omit<Post, 'date'> {
+  date: string
+}
+
 type PostCardProps = {
   post: Post
 }
