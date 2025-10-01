@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import PostDetail from './pages/PostDetail'
 import About from './pages/About'
+import PostForm from './pages/PostForm'
 
 const STORAGE_KEY = 'blogPosts'
 
@@ -46,6 +47,7 @@ const App: React.FC = () => {
             <Route path='/' element={<Home posts={posts} />} />
             <Route path='/post/:id' element={<PostDetail posts={posts} />} />
             <Route path='/about' element={<About />} />
+            <Route path='/new-post' element={<PostForm onAddPost={(newPost) => setPosts([...posts, newPost])} />} />
           </Routes>
         </main>
       </div>
