@@ -1,13 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
-import PostCard from './components/PostCard'
+import PostCard, { type PostRaw, type Post } from './components/PostCard'
 import { initialPosts } from './data/initialPosts'
 import { useTranslation } from 'react-i18next'
+
+const STORAGE_KEY = 'blogPosts'
 
 const App: React.FC = () => {
   const { t } = useTranslation()
 
-  const [posts, setPosts] = useState(initialPosts)
+  const [posts, setPosts] = useState<Post[]>([])
+
+  useEffect(() => {
+    const savedPosts = localStorage.getItem(STORAGE_KEY)
+    if (savedPosts) {
+      try {
+        const parsed: PostRaw[] = JSON.parse(savedPosts)
+        const restored: Post[] = parsed.map((p) => ({
+          ...p,
+          date: new Date(p.date)
+        }))
+        setPosts(restored)
+        return
+      } catch (err) {
+        console.error('Error parsing posts from localStorage', err)
+      }
+    }
+    setPosts(initialPosts)
+  }, [])
+
+  useEffect(() => {
+    if (posts.length > 0) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(posts))
+    }
+  }, [posts])
 
   return (
     <div className='min-h-screen bg-gray-100'>
