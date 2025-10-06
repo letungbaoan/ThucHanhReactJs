@@ -5,5 +5,12 @@
     "noDate": "Ngày không hợp lệ",
     "noExcerpt": "Không có tóm tắt",
     "readMore": "Đọc thêm"
+  },
+  "postdetail": {
+    "notFound": "Không tìm thấy bài viết"
+  },
+  "about": {
+    "title": "Giới thiệu",
+    "content": "Đây là một ứng dụng blog đơn giản được xây dựng bằng React và TypeScript."
   }
 }

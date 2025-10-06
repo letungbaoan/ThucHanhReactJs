@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
-import PostCard, { type PostRaw, type Post } from './components/PostCard'
+import { type PostRaw, type Post } from './components/PostCard'
 import { initialPosts } from './data/initialPosts'
-import { useTranslation } from 'react-i18next'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import PostDetail from './pages/PostDetail'
+import About from './pages/About'
 
 const STORAGE_KEY = 'blogPosts'
 
 const App: React.FC = () => {
-  const { t } = useTranslation()
-
   const [posts, setPosts] = useState<Post[]>([])
 
   useEffect(() => {
@@ -36,17 +37,19 @@ const App: React.FC = () => {
   }, [posts])
 
   return (
-    <div className='min-h-screen bg-gray-100'>
-      <Header title='Simple Blog' />
+    <Router>
+      <div className='min-h-screen bg-gray-100'>
+        <Header title='Simple Blog' />
 
-      <main className='mx-auto grid max-w-3xl gap-6 p-6'>
-        {posts.length > 0 ? (
-          posts.map((post) => <PostCard key={post.id} post={post} />)
-        ) : (
-          <p className='text-center text-gray-500'>{t('noPosts')}</p>
-        )}
-      </main>
-    </div>
+        <main className='mx-auto max-w-3xl p-6'>
+          <Routes>
+            <Route path='/' element={<Home posts={posts} />} />
+            <Route path='/post/:id' element={<PostDetail posts={posts} />} />
+            <Route path='/about' element={<About />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   )
 }
 

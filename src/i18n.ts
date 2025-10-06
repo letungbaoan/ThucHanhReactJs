@@ -12,7 +12,9 @@ i18n.use(initReactI18next).init({
         title: 'Simple Blog',
         noPosts: 'No posts available'
       },
-      postcard: en.postcard
+      postcard: en.postcard,
+      postdetail: en.postdetail,
+      about: en.about
     },
     vi: {
       translation: {
@@ -21,7 +23,9 @@ i18n.use(initReactI18next).init({
         title: 'Blog đơn giản',
         noPosts: 'Không có bài viết nào'
       },
-      postcard: vi.postcard
+      postcard: vi.postcard,
+      postdetail: vi.postdetail,
+      about: vi.about
     }
   },
   lng: 'vi',
