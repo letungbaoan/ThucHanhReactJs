@@ -24,6 +24,9 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         <Link to='/about' className='hover:underline'>
           {t('about')}
         </Link>
+        <Link to='/new-post' className='hover:underline'>
+          {t('newPost')}
+        </Link>
         <button
           onClick={toggleLang}
           className='ml-4 rounded bg-white px-2 py-1 text-sm font-medium text-blue-600 hover:bg-gray-200'

@@ -10,22 +10,26 @@ i18n.use(initReactI18next).init({
         home: 'Home',
         about: 'About',
         title: 'Simple Blog',
-        noPosts: 'No posts available'
+        noPosts: 'No posts available',
+        newPost: 'New Post'
       },
       postcard: en.postcard,
       postdetail: en.postdetail,
-      about: en.about
+      about: en.about,
+      newpost: en.newpost
     },
     vi: {
       translation: {
         home: 'Trang chủ',
         about: 'Giới thiệu',
         title: 'Blog đơn giản',
-        noPosts: 'Không có bài viết nào'
+        noPosts: 'Không có bài viết nào',
+        newPost: 'Bài viết mới'
       },
       postcard: vi.postcard,
       postdetail: vi.postdetail,
-      about: vi.about
+      about: vi.about,
+      newpost: vi.newpost
     }
   },
   lng: 'vi',

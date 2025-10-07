@@ -12,5 +12,13 @@
   "about": {
     "title": "Giới thiệu",
     "content": "Đây là một ứng dụng blog đơn giản được xây dựng bằng React và TypeScript."
+  },
+  "newpost": {
+    "title": "Bài viết mới",
+    "formTitle": "Tiêu đề",
+    "formAuthor": "Tác giả",
+    "formExcerpt": "Tóm tắt",
+    "formContent": "Nội dung",
+    "submit": "Thêm"
   }
 }
