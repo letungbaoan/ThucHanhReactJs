@@ -7,7 +7,9 @@
     "readMore": "Read more"
   },
   "postdetail": {
-    "notFound": "Post not found"
+    "notFound": "Post not found",
+    "edit": "Edit",
+    "delete": "Delete"
   },
   "about": {
     "title": "About",
@@ -19,6 +21,19 @@
     "formAuthor": "Author",
     "formExcerpt": "Excerpt",
     "formContent": "Content",
-    "submit": "Add"
+    "submit": "Add",
+    "update": "Update",
+    "titleRequired": "Title is required.",
+    "authorRequired": "Author is required.",
+    "excerptRequired": "Excerpt is required.",
+    "contentRequired": "Content is required."
+  },
+  "editpostwrapper": {
+    "notFound": "Post not found"
+  },
+  "common": {
+    "updateSuccess": "Post updated successfully!",
+    "createSuccess": "New post created successfully!",
+    "error": "An error occurred, please try again!"
   }
 }
