@@ -43,7 +43,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ToastContainer position='top-right' autoClose={3000} />
-      <div className='min-h-screen bg-gray-100'>
+      <div className='min-h-screen bg-gray-100 text-black dark:bg-gray-800 dark:text-white'>
         <Header title='Simple Blog' />
 
         <main className='mx-auto max-w-3xl p-6'>
