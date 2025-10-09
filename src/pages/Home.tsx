@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import React from 'react'
 import PostCard, { type Post } from '../components/PostCard'
 import { useTranslation } from 'react-i18next'
