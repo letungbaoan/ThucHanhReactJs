@@ -1,30 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import type { Post } from '../components/PostCard'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../context/ThemeContext'
+import { getPostById } from '../services/postService'
 
 type PostDetailProps = {
-  posts: Post[]
-  onDelete: (id: number) => void
+  onDelete: (id: string) => void
 }
 
-const PostDetail: React.FC<PostDetailProps> = ({ posts, onDelete }) => {
-  const { t } = useTranslation('postdetail')
+const PostDetail: React.FC<PostDetailProps> = ({ onDelete }) => {
+  const { t } = useTranslation(['postdetail', 'loading'])
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
   const { theme } = useTheme()
-  const post = posts.find((p) => p.id === Number(id))
+  const [post, setPost] = useState<Post | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
-  if (!post)
-    return <p className={`text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{t('notFound')}</p>
+  useEffect(() => {
+    const fetchPost = async () => {
+      if (!id) return
+      setLoading(true)
+      try {
+        const data = await getPostById(id)
+        setPost(data)
+      } catch {
+        setError(t('notFound'))
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchPost()
+  }, [id, t])
 
-  const handleDelete = () => {
-    if (window.confirm(t('confirmDelete') || 'Bạn có chắc chắn muốn xóa bài viết này?')) {
-      onDelete(post.id)
+  const handleDelete = async () => {
+    if (!post) return
+    if (window.confirm(t('confirmDelete'))) {
+      onDelete(String(post.id))
       navigate('/')
     }
   }
+
+  if (loading)
+    return (
+      <p className={`text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{t('loading:message')}</p>
+    )
+  if (error || !post)
+    return (
+      <p className={`text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{error || t('notFound')}</p>
+    )
 
   return (
     <article
