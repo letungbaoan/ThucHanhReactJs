@@ -9,7 +9,8 @@
   "postdetail": {
     "notFound": "Không tìm thấy bài viết",
     "edit": "Chỉnh sửa",
-    "delete": "Xóa"
+    "delete": "Xóa",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa bài viết này không?"
   },
   "about": {
     "title": "Giới thiệu",
@@ -35,5 +36,19 @@
     "updateSuccess": "Cập nhật bài viết thành công!",
     "createSuccess": "Thêm bài viết mới thành công!",
     "error": "Đã xảy ra lỗi, vui lòng thử lại!"
+  },
+  "toast": {
+    "loadSuccess": "Tải bài viết thành công!",
+    "loadError": "Lỗi khi tải dữ liệu!",
+    "addSuccess": "Thêm bài viết thành công!",
+    "updateSuccess": "Cập nhật bài viết thành công!",
+    "deleteSuccess": "Xóa bài viết thành công!"
+  },
+  "error": {
+    "unknown": "Đã xảy ra lỗi không xác định!",
+    "fetchFail": "Không thể tải dữ liệu từ server!"
+  },
+  "loading": {
+    "message": "Đang tải..."
   }
 }
