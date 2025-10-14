@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 
 export interface Post {
-  id: number
+  id: string
   title: string
   author: string
   date: Date

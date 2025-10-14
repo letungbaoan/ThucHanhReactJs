@@ -37,7 +37,7 @@ const PostForm: React.FC<PostFormProps> = ({ onSubmit, initialPost }) => {
     setErrors({})
     try {
       const newPost: Post = {
-        id: initialPost ? initialPost.id : Date.now(),
+        id: initialPost ? initialPost.id : String(Date.now()),
         title: title.trim(),
         author: author.trim(),
         excerpt: excerpt.trim(),
@@ -47,15 +47,8 @@ const PostForm: React.FC<PostFormProps> = ({ onSubmit, initialPost }) => {
 
       onSubmit(newPost)
 
-      if (initialPost) {
-        toast.success(t('common:updateSuccess'))
-      } else {
-        toast.success(t('common:createSuccess'))
-      }
-
       navigate(initialPost ? `/post/${newPost.id}` : '/')
-    } catch (error) {
-      console.error(error)
+    } catch {
       toast.error(t('common:error'))
     }
   }
