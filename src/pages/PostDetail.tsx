@@ -1,43 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import type { Post } from '../components/PostCard'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../context/ThemeContext'
-import { getPostById } from '../services/postService'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { loadPostById, removePost } from '../store/postsSlice'
 
-type PostDetailProps = {
-  onDelete: (id: string) => void
-}
-
-const PostDetail: React.FC<PostDetailProps> = ({ onDelete }) => {
+const PostDetail: React.FC = () => {
   const { t } = useTranslation(['postdetail', 'loading'])
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
   const { theme } = useTheme()
-  const [post, setPost] = useState<Post | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const dispatch = useAppDispatch()
+  const { posts, loading, error } = useAppSelector((state) => state.posts)
+
+  const post = posts.find((p) => p.id === id)
 
   useEffect(() => {
-    const fetchPost = async () => {
-      if (!id) return
-      setLoading(true)
-      try {
-        const data = await getPostById(id)
-        setPost(data)
-      } catch {
-        setError(t('notFound'))
-      } finally {
-        setLoading(false)
-      }
+    if (id && !post) {
+      dispatch(loadPostById(id))
     }
-    fetchPost()
-  }, [id, t])
+  }, [id, post, dispatch])
 
   const handleDelete = async () => {
-    if (!post) return
+    if (!id) return
     if (window.confirm(t('confirmDelete'))) {
-      onDelete(String(post.id))
+      await dispatch(removePost(id))
       navigate('/')
     }
   }
@@ -46,6 +33,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ onDelete }) => {
     return (
       <p className={`text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{t('loading:message')}</p>
     )
+
   if (error || !post)
     return (
       <p className={`text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{error || t('notFound')}</p>
@@ -59,7 +47,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ onDelete }) => {
     >
       <h2 className='text-2xl font-bold'>{post.title}</h2>
       <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-        {post.author} • {post.date.toLocaleDateString('vi-VN')}
+        {post.author} • {new Date(post.date).toLocaleDateString('vi-VN')}
       </p>
       <div className={`mt-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{post.content}</div>
       <div className='mt-4 flex gap-2'>

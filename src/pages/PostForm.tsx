@@ -42,7 +42,7 @@ const PostForm: React.FC<PostFormProps> = ({ onSubmit, initialPost }) => {
         author: author.trim(),
         excerpt: excerpt.trim(),
         content: content.trim(),
-        date: initialPost ? initialPost.date : new Date()
+        date: initialPost ? initialPost.date : new Date().toISOString()
       }
 
       onSubmit(newPost)

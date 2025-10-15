@@ -7,7 +7,7 @@ export const fetchPosts = async (): Promise<Post[]> => {
   const res = await instance.get<PostRaw[]>(API_URL)
   return (res.data as PostRaw[]).map((p) => ({
     ...p,
-    date: new Date(p.date)
+    date: p.date
   }))
 }
 
@@ -26,5 +26,5 @@ export const deletePost = async (id: string): Promise<void> => {
 
 export const getPostById = async (id: string): Promise<Post> => {
   const res = await instance.get<PostRaw>(`${API_URL}/${id}`)
-  return { ...res.data, date: new Date(res.data.date) }
+  return { ...res.data, date: new Date(res.data.date).toISOString() }
 }
